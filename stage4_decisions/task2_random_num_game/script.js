@@ -5,6 +5,16 @@ var guess = prompt('I am thinking of a number between 1 and 6. What is it?');
 
 if (parseInt(guess) === randomNumber) {
     correctGuess = true;
+} else if (parseInt(guess) < randomNumber) {
+    var guessMore = prompt('Try again. The number I am thinking of is more than ' + guess);
+    if (parseInt(guessMore) === randomNumber) {
+        correctGuess = true;
+    }
+} else if (parseInt(guess) > randomNumber) {
+    var guessLess = prompt('Try again. The number I am thinking of is less then ' + guess);
+    if (parseInt(guessLess) === randomNumber) {
+        correctGuess = true;
+    }
 }
 
 if (correctGuess) {
