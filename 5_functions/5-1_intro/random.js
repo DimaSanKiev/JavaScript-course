@@ -1,7 +1,7 @@
-function alertRandom() {
-    var randomNumber = Math.floor(Math.random() * 6) + 1;
-    alert(randomNumber);
+function getRandomNumber() {
+    return Math.floor(Math.random() * 6) + 1;
 }
-alertRandom();
-alertRandom();
-alertRandom();
+
+alert(getRandomNumber());
+console.log(getRandomNumber());
+var dieRoll = getRandomNumber();
