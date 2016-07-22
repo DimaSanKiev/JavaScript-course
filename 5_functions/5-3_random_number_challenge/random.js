@@ -4,6 +4,11 @@ function generateRandomNumber(lower, upper) {
 
 var min = parseInt(prompt('Insert the lower number:'));
 var max = parseInt(prompt('Insert the upper number:'));
-var random = generateRandomNumber(min, max);
 
-document.write('<p>The random number between ' + min + ' and ' + max + ' is ' + random + '.</p>');
+if (isNaN(max) || isNaN(max)) {
+    document.write('<p>Please enter the numbers.</p>');
+    throw new Error('Please enter the numbers.');
+} else {
+    var random = generateRandomNumber(min, max);
+    document.write('<p>The random number between ' + min + ' and ' + max + ' is ' + random + '.</p>');
+}
