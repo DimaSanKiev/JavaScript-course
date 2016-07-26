@@ -9,9 +9,20 @@ var rightAnswers = 0;
 var question;
 var answer;
 var input;
+var correctAnswers = [];
+var wrongAnswers = [];
 
 function print(message) {
     document.write(message);
+}
+
+function printList(list) {
+    var listHTML = '<ol>';
+    for (var i = 0; i < list.length; i += 1) {
+        listHTML += '<li>' + list[i][0] + ' -' + list[i][1] + '</li>';
+    }
+    listHTML += '</ol>';
+    print(listHTML);
 }
 
 for (var i = 0; i < questions.length; i++) {
@@ -20,10 +31,26 @@ for (var i = 0; i < questions.length; i++) {
     input = prompt(question).toUpperCase();
     if (input === answer) {
         rightAnswers++;
-        print('<p style="color: green">' + question + ' ' + input + ' – Right!</p>');
+        correctAnswers.push([question, input]);
     } else {
-        print('<p style="color: darkred">' + question + ' ' + input + ' – Wrong...</p>');
+        wrongAnswers.push([question, input]);
     }
 }
 
-print('<br/><h2>You have <b>' + rightAnswers + '</b> right answer(s).</h2>');
+print('<br/><h2>You got <b>' + rightAnswers + '</b> right answer(s).</h2>');
+
+if (correctAnswers.length > 0) {
+    print('<p style="color: green">You got these question(s) correct:</p>');
+    printList(correctAnswers);
+    if (wrongAnswers.length === 0) {
+        print('<p>You haven\'t any incorrect answers, congratulations!</p>');
+    }
+}
+
+if (wrongAnswers.length > 0) {
+    print('<p style="color: darkred">You got these question(s) wrong:</p>');
+    printList(wrongAnswers);
+    if (correctAnswers.length === 0) {
+        print('<p>Sorry, all your answers are wrong... Study more and try again.</p>');
+    }
+}
