@@ -13,16 +13,17 @@ var correctAnswers = [];
 var wrongAnswers = [];
 
 function print(message) {
-    document.write(message);
+    var outputDiv = document.getElementById('output');
+    outputDiv.innerHTML = message;
 }
 
-function printList(list) {
+function buildList(list) {
     var listHTML = '<ol>';
     for (var i = 0; i < list.length; i += 1) {
         listHTML += '<li>' + list[i][0] + ' -' + list[i][1] + '</li>';
     }
     listHTML += '</ol>';
-    print(listHTML);
+    return listHTML;
 }
 
 for (var i = 0; i < questions.length; i++) {
@@ -37,20 +38,22 @@ for (var i = 0; i < questions.length; i++) {
     }
 }
 
-print('<br/><h2>You got <b>' + rightAnswers + '</b> right answer(s).</h2>');
+html = '<br/><h2>You got <b>' + rightAnswers + '</b> right answer(s).</h2>';
 
 if (correctAnswers.length > 0) {
-    print('<p style="color: green">You got these question(s) correct:</p>');
-    printList(correctAnswers);
+    html += '<p style="color: green">You got these question(s) correct:</p>';
+    html += buildList(correctAnswers);
     if (wrongAnswers.length === 0) {
-        print('<p>You haven\'t any incorrect answers, congratulations!</p>');
+        html += '<p>You haven\'t any incorrect answers, congratulations!</p>';
     }
 }
 
 if (wrongAnswers.length > 0) {
-    print('<p style="color: darkred">You got these question(s) wrong:</p>');
-    printList(wrongAnswers);
+    html += '<p style="color: darkred">You got these question(s) wrong:</p>';
+    html += buildList(wrongAnswers);
     if (correctAnswers.length === 0) {
-        print('<p>Sorry, all your answers are wrong... Study more and try again.</p>');
+        html += '<p>Sorry, all your answers are wrong... Study more and try again.</p>';
     }
 }
+
+print(html);

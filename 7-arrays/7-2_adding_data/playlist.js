@@ -8,4 +8,4 @@ playlist.push('Angel\'s Love', 'Black Is The Color');
 playlist.unshift('Filmic');
 playlist.unshift('Time Is The Healer', 'Trigger');
 
-printList(playlist);
+buildList(playlist);
