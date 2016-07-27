@@ -12,7 +12,6 @@ for (var i = 0; i < students.length; i++) {
     html += '<p>Track: ' + student.track + '</p>';
     html += '<p>Achievements: ' + student.achievements + '</p>';
     html += '<p>Points: ' + student.points + '</p>';
-    html += '</br>';
 }
 
 print(html);
