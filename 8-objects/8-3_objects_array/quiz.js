@@ -54,7 +54,7 @@ for (var i = 0; i < questions.length; i++) {
     }
 }
 
-html = '<br/><h2>You got <b>' + rightAnswers + '</b> right answer(s).</h2>';
+report = '<br/><h2>You got <b>' + rightAnswers + '</b> right answer(s).</h2>';
 
 if (correctAnswers.length > 0) {
     html += '<p style="color: green">You got these question(s) correct:</p>';

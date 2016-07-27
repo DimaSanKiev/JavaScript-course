@@ -1,17 +1,31 @@
-var html = '';
+var message;
 var student;
+var search;
 
 function print(message) {
     var outputDiv = document.getElementById('output');
     outputDiv.innerHTML = message;
 }
 
-for (var i = 0; i < students.length; i++) {
-    student = students[i];
-    html += '<h2>Student: ' + student.name + '</h2>';
-    html += '<p>Track: ' + student.track + '</p>';
-    html += '<p>Achievements: ' + student.achievements + '</p>';
-    html += '<p>Points: ' + student.points + '</p>';
+function getStudentReport() {
+    var report = '<h2>Student: ' + student.name + '</h2>';
+    report += '<p>Track: ' + student.track + '</p>';
+    report += '<p>Achievements: ' + student.achievements + '</p>';
+    report += '<p>Points: ' + student.points + '</p>';
+    return report;
 }
 
-print(html);
+while (true) {
+    search = prompt('Please input student\'s name [John] (or type \'quit\' to exit):');
+    if (search === null || search.toLowerCase() === 'quit') {
+        break;
+    } else {
+        for (var i = 0; i < students.length; i++) {
+            student = students[i];
+            if (student.name === search) {
+                message = getStudentReport(student);
+                print(message);
+            }
+        }
+    }
+}
