@@ -7,15 +7,20 @@ function print(message) {
     outputDiv.innerHTML = message;
 }
 
-function getStudentReport() {
-    var report = '<h2>Student: ' + student.name + '</h2>';
-    report += '<p>Track: ' + student.track + '</p>';
-    report += '<p>Achievements: ' + student.achievements + '</p>';
-    report += '<p>Points: ' + student.points + '</p>';
+function getStudentReport(results) {
+    var report = '';
+    for (var i = 0; i < results.length; i++) {
+        report += '<h2>Student: ' + results[i].name + '</h2>';
+        report += '<p>Track: ' + results[i].track + '</p>';
+        report += '<p>Achievements: ' + results[i].achievements + '</p>';
+        report += '<p>Points: ' + results[i].points + '</p>';
+    }
     return report;
 }
 
 while (true) {
+    var results = [];
+    message = '';
     search = prompt('Please input student\'s name [John] (or type \'quit\' to exit):');
     if (search === null || search.toLowerCase() === 'quit') {
         break;
@@ -23,9 +28,15 @@ while (true) {
         for (var i = 0; i < students.length; i++) {
             student = students[i];
             if (student.name === search) {
-                message = getStudentReport(student);
-                print(message);
+                results.push(student);
             }
+            message = getStudentReport(results);
+            print(message);
+        }
+        results.length = 0;
+        if (message === '') {
+            message = '<h2>There is no such student with name ' + search + '.</h2>';
+            print(message);
         }
     }
 }
